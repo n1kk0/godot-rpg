@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Entities/Player/player_down_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
@@ -54,6 +54,8 @@
 [ext_resource path="res://Sounds/fireball.wav" type="AudioStream" id=52]
 [ext_resource path="res://Sounds/level_up.wav" type="AudioStream" id=53]
 [ext_resource path="res://GUI/MenuPopup.gd" type="Script" id=54]
+[ext_resource path="res://Entities/House.tscn" type="PackedScene" id=55]
+[ext_resource path="res://Entities/House/House.gd" type="Script" id=56]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -198,6 +200,51 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 56, 2 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 2, 33 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 2, 33 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 32, 4 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 16, 4 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 7, 13 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 5, 11 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 3, 3 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 8, 5 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 2, 9 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 2, 5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 14, 9 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 4, 3 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 7, 17 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 50, 32 )
 
 [node name="Root" type="Node2D"]
 
@@ -607,6 +654,101 @@ position = Vector2( 244, 40 )
 
 [node name="Necklace" parent="." instance=ExtResource( 47 )]
 position = Vector2( 673, 538 )
+
+[node name="House" parent="." instance=ExtResource( 55 )]
+position = Vector2( 634, 167 )
+script = ExtResource( 56 )
+
+[node name="NorthWall" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/NorthWall"]
+position = Vector2( 0, -31 )
+shape = SubResource( 6 )
+
+[node name="EastWall" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/EastWall"]
+position = Vector2( 54, 0 )
+shape = SubResource( 7 )
+
+[node name="WestWall" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/WestWall"]
+position = Vector2( -54, 0 )
+shape = SubResource( 8 )
+
+[node name="SouthWallLeft" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/SouthWallLeft"]
+position = Vector2( -24, 33 )
+shape = SubResource( 9 )
+
+[node name="SouthWallRight" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/SouthWallRight"]
+position = Vector2( 40, 33 )
+shape = SubResource( 10 )
+
+[node name="Bed" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Bed"]
+position = Vector2( -44, -11 )
+shape = SubResource( 11 )
+
+[node name="Desk" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Desk"]
+position = Vector2( -46, 16 )
+shape = SubResource( 12 )
+
+[node name="Stool" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Stool"]
+position = Vector2( -37, 17 )
+shape = SubResource( 13 )
+
+[node name="Wardrobe" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Wardrobe"]
+position = Vector2( -20, -24 )
+shape = SubResource( 14 )
+
+[node name="InternalWallTop" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/InternalWallTop"]
+position = Vector2( -9, -20 )
+shape = SubResource( 15 )
+
+[node name="InternalWallBottom" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/InternalWallBottom"]
+position = Vector2( -9, 24 )
+shape = SubResource( 16 )
+
+[node name="Fire" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Fire"]
+position = Vector2( 9, -22 )
+shape = SubResource( 17 )
+
+[node name="Chair" type="StaticBody2D" parent="House"]
+position = Vector2( 9, -22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Chair"]
+position = Vector2( 19, 26 )
+shape = SubResource( 18 )
+
+[node name="Table" type="StaticBody2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Table"]
+position = Vector2( 38, 4 )
+shape = SubResource( 19 )
+
+[node name="Area2D" type="Area2D" parent="House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House/Area2D"]
+position = Vector2( 0, 4 )
+shape = SubResource( 20 )
 [connection signal="player_level_up" from="Player" to="CanvasLayer/LevelPopup" method="_on_Player_player_level_up"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Health" method="_on_Player_player_stats_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Mana" method="_on_Player_player_stats_changed"]
@@ -615,3 +757,5 @@ position = Vector2( 673, 538 )
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/ManaPotions" method="_on_Player_player_stats_changed"]
 [connection signal="animation_finished" from="Player/AnimatedSprite" to="Player" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="animation_finished" from="CanvasLayer/DialoguePopup/AnimationPlayer" to="CanvasLayer/DialoguePopup" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="House/Area2D" to="House" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="House/Area2D" to="House" method="_on_Area2D_body_exited"]
