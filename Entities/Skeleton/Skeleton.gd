@@ -83,6 +83,9 @@ func hit(damage):
 		$AnimatedSprite.play("death")
 		emit_signal("death")
 
+		# Play death sound
+		$SoundDeath.play()
+
 		if rng.randf() <= 0.8:
 			var potion = potion_scene.instance()
 			potion.type = rng.randi() % 2
@@ -161,3 +164,6 @@ func _on_AnimatedSprite_frame_changed():
 
 		if target != null and target.name == "Player" and player.health > 0:
 			player.hit(attack_damage)
+
+		# Play attack sound
+		$SoundAttack.play()

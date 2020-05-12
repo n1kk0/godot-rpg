@@ -25,3 +25,6 @@ func _on_Player_player_level_up():
 	set_process_input(true)
 	popup_centered()
 	get_tree().paused = true
+
+	# Play level up sound
+	$SoundLevelUp.play()

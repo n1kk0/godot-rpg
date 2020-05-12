@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Entities/Skeleton/Skeleton.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Skeleton/skeleton_up_attack_2.png" type="Texture" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://Entities/Skeleton/skeleton_left_walk_1.png" type="Texture" id=29]
 [ext_resource path="res://Entities/Skeleton/skeleton_right_attack_2.png" type="Texture" id=30]
 [ext_resource path="res://Entities/Skeleton/skeleton_down_attack_1.png" type="Texture" id=31]
+[ext_resource path="res://Sounds/attack.wav" type="AudioStream" id=32]
+[ext_resource path="res://Sounds/death.wav" type="AudioStream" id=33]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -144,6 +146,14 @@ anims/Hit = SubResource( 3 )
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 16 )
+
+[node name="SoundAttack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 32 )
+volume_db = 6.0
+
+[node name="SoundDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 33 )
+volume_db = 6.0
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

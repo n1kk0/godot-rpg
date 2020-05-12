@@ -118,6 +118,9 @@ func _input(event):
 			var animation = get_animation_direction(last_direction) + "_attack"
 			$AnimatedSprite.play(animation)
 
+			# Play attack sound
+			$SoundAttack.play()
+
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
 	elif event.is_action_pressed("Fireball"):
@@ -133,6 +136,9 @@ func _input(event):
 			var animation = get_animation_direction(last_direction) + "_fireball"
 			$AnimatedSprite.play(animation)
 
+			# Play fireball sound
+			$SoundFireball.play()
+
 			# Add cooldown time to current time
 			next_fireball_time = now + fireball_cooldown_time
 	elif event.is_action_pressed("drink_health"):
@@ -140,11 +146,17 @@ func _input(event):
 			health_potions = health_potions - 1
 			health = min(health + 50, health_max)
 			emit_signal("player_stats_changed", self)
+
+			# Play sound
+			$SoundObject.play()
 	elif event.is_action_pressed("drink_mana"):
 		if mana_potions > 0:
 			mana_potions = mana_potions - 1
 			mana = min(mana + 50, mana_max)
 			emit_signal("player_stats_changed", self)
+
+			# Play sound
+			$SoundObject.play()
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
@@ -191,6 +203,8 @@ func hit(damage):
 	else:
 		set_process(false)
 		$AnimationPlayer.play("Game Over")
+		$Music.stop()
+		$MusicGameOver.play()
 
 func add_potion(type):
 	if type == Potion.HEALTH:
@@ -199,6 +213,9 @@ func add_potion(type):
 		mana_potions = mana_potions + 1
 
 	emit_signal("player_stats_changed", self)
+
+	# Play sound
+	$SoundObject.play()
 
 func add_xp(value):
 	xp += value
