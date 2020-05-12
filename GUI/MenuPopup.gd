@@ -4,7 +4,7 @@ onready var player = get_node("/root/Root/Player")
 var already_paused
 var selected_menu
 
-func _input(event):
+func _input(_event):
 	if not visible:
 		if Input.is_action_just_pressed("menu"):
 			# Pause game
@@ -39,6 +39,7 @@ func _input(event):
 					hide()
 				1:
 					# Restart game
+					# warning-ignore:return_value_discarded
 					get_tree().change_scene("res://Scenes/Main.tscn")
 					get_tree().paused = false
 				2:
