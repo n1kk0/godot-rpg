@@ -1,0 +1,27 @@
+stages:
+- name: build
+  steps:
+  - runScriptConfig:
+      image: barichello/godot-ci:3.2.1
+      shellScript: |
+        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+        godot -v --export "HTML5" ./build/web/index.html
+- name: publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./containers/Dockerfile
+      buildContext: .
+      tag: simplerpg:${CICD_EXECUTION_SEQUENCE}
+- name: deploy
+  steps:
+  - applyYamlConfig:
+      path: ./containers/deployment.yaml
+timeout: 60
+notification:
+  recipients:
+  - recipient: '#infra'
+    notifier: c-55nms:n-n5knt
+  condition:
+  - Success
+  - Changed
+  - Failed

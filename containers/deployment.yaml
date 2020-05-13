@@ -1,0 +1,76 @@
+---
+kind: Certificate
+apiVersion: cert-manager.io/v1alpha2
+metadata:
+  name: simplerpg-cert
+  namespace: game
+spec:
+  secretName: simplerpg-cert
+  commonName: simplerpg.techmeup.io
+  dnsNames:
+  - simplerpg.techmeup.io
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: simplerpg-ingress
+  namespace: game
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/tls-acme: "'true'"
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: simplerpg.techmeup.io
+    http:
+      paths:
+      - backend:
+          serviceName: simplerpg-service
+          servicePort: 80
+  tls:
+  - hosts:
+    - simplerpg.techmeup.io
+    secretName: simplerpg-cert
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: simplerpg-service
+  namespace: game
+spec:
+  selector:
+    app: simplerpg
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplerpg
+  namespace: game
+  labels:
+    app: simplerpg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simplerpg
+  template:
+    metadata:
+      labels:
+        app: simplerpg
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: simplerpg
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        ports:
+        - containerPort: 80
