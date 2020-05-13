@@ -3,9 +3,7 @@ stages:
   steps:
   - runScriptConfig:
       image: barichello/godot-ci:3.2.1
-      shellScript: |
-        mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-        godot -v --export "HTML5" ./build/web/index.html
+      shellScript: godot -v --export "HTML5" ./build/web/index.html
 - name: publish
   steps:
   - publishImageConfig:
