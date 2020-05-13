@@ -15,9 +15,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FirstTest"
+config/name="Simple RPG"
 run/main_scene="res://Scenes/main.tscn"
 config/icon="res://GUI/simplerpg_icon.png"
+
+[audio]
+
+default_bus_layout=""
 
 [display]
 
