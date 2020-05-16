@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal skeleton_stats_changed
+
 # Node references
 var player
 
@@ -75,7 +77,9 @@ func hit(damage):
 
 	if health > 0:
 		$AnimationPlayer.play("Hit")
+		emit_signal("skeleton_stats_changed", self)
 	else:
+		emit_signal("skeleton_stats_changed", self)
 		$Timer.stop()
 		direction = Vector2.ZERO
 		set_process(false)

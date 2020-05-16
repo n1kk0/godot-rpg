@@ -683,6 +683,9 @@ custom_fonts/normal_font = ExtResource( 37 )
 bbcode_enabled = true
 bbcode_text = "[center][wave amp=40 freq=2]ZZZ...[/wave][/center]"
 text = "ZZZ..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SkeletonSpawner" parent="." instance=ExtResource( 39 )]
 
