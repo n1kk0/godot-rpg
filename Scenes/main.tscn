@@ -184,7 +184,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.412934, 2.60576, 3.0073 ),
+"times": PoolRealArray( 0, 0.423001, 2.61515, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -681,10 +681,8 @@ rect_clip_content = false
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 37 )
 bbcode_enabled = true
-bbcode_text = "[center][wave amp=40 freq=2]ZZZ...[/wave][/center]
-"
-text = "ZZZ...
-"
+bbcode_text = "[center][wave amp=40 freq=2]ZZZ...[/wave][/center]"
+text = "ZZZ..."
 
 [node name="SkeletonSpawner" parent="." instance=ExtResource( 39 )]
 

@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal player_stats_changed
+signal player_level_up
+
 # Player movement speed
 export var speed = 75
 
@@ -37,9 +40,6 @@ var mana_potions = 0
 var xp = 0;
 var xp_next_level = 100;
 var level = 1;
-
-signal player_stats_changed
-signal player_level_up
 
 func _ready():
 	emit_signal("player_stats_changed", self)
