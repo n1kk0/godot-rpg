@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Entities/Player/player_down_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
@@ -59,6 +59,7 @@
 [ext_resource path="res://GUI/HelpPopup.gd" type="Script" id=57]
 [ext_resource path="res://GUI/settings.png" type="Texture" id=58]
 [ext_resource path="res://GUI/help.png" type="Texture" id=59]
+[ext_resource path="res://GUI/close.png" type="Texture" id=60]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 56, 2 )
@@ -741,6 +742,8 @@ margin_left = 60.0
 margin_top = 40.0
 margin_right = 260.0
 margin_bottom = 140.0
+custom_icons/close_highlight = ExtResource( 60 )
+custom_icons/close = ExtResource( 60 )
 custom_fonts/title_font = ExtResource( 37 )
 window_title = "Simple RPG"
 script = ExtResource( 54 )
@@ -802,12 +805,17 @@ __meta__ = {
 [node name="HelpPopup" type="WindowDialog" parent="CanvasLayer"]
 pause_mode = 2
 margin_left = 60.0
-margin_top = 25.0
+margin_top = 35.0
 margin_right = 260.0
-margin_bottom = 175.0
+margin_bottom = 160.0
+custom_icons/close_highlight = ExtResource( 60 )
+custom_icons/close = ExtResource( 60 )
 custom_fonts/title_font = ExtResource( 37 )
 window_title = "ACTION KEYS"
 script = ExtResource( 57 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Fireball" type="ColorRect" parent="CanvasLayer/HelpPopup"]
 margin_left = 10.0
