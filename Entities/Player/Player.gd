@@ -3,6 +3,8 @@ extends KinematicBody2D
 signal player_stats_changed
 signal player_level_up
 
+var fireball_scene = preload("res://Entities/Fireball.tscn")
+
 # Player movement speed
 export var speed = 75
 
@@ -24,8 +26,6 @@ var mana_regeneration = 2
 var attack_cooldown_time = 1000
 var next_attack_time = 0
 var attack_damage = 30
-
-var fireball_scene = preload("res://Entities/Fireball.tscn")
 
 # Fireball variables
 var fireball_damage = 50
@@ -95,7 +95,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and not event.pressed:
 			drag_enabled = false
-	if event.is_action_pressed("Attack"):
+	if event.is_action_pressed("attack"):
 		# Check if player can attack
 		var now = OS.get_ticks_msec()
 
@@ -132,7 +132,7 @@ func _input(event):
 
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
-	elif event.is_action_pressed("Fireball"):
+	elif event.is_action_pressed("fireball"):
 		var now = OS.get_ticks_msec()
 
 		if mana >= 25 and now >= next_fireball_time:
