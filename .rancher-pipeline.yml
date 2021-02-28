@@ -10,6 +10,8 @@ stages:
       dockerfilePath: ./containers/Dockerfile
       buildContext: .
       tag: simplerpg:${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: docker-registry.docker-registry.svc.cluster.local
 - name: deploy
   steps:
   - applyYamlConfig:
