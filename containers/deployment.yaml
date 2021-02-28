@@ -67,8 +67,6 @@ spec:
       labels:
         app: simplerpg
     spec:
-      imagePullSecrets:
-      - name: local
       containers:
       - name: simplerpg
         image: ${CICD_REGISTRY}/${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
