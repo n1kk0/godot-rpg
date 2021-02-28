@@ -12,6 +12,8 @@ stages:
       tag: simplerpg:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: docker-registry.docker-registry.svc.cluster.local
+    env:
+      PLUGIN_INSECURE: "true"
 - name: deploy
   steps:
   - applyYamlConfig:
