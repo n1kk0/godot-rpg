@@ -11,7 +11,7 @@ stages:
       buildContext: .
       tag: simplerpg:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: registry-docker-registry.registry.svc.cluster.local
+      registry: registry-docker-registry.registry.svc.cluster.local:5000
     env:
       PLUGIN_INSECURE: "true"
 - name: deploy
