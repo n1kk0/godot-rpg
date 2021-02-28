@@ -67,8 +67,6 @@ spec:
       labels:
         app: simplerpg
     spec:
-      imagePullSecrets:
-      - name: pipeline-docker-registry
       containers:
       - name: simplerpg
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
